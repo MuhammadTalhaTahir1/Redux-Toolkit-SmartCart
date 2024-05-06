@@ -28,46 +28,97 @@ const itemWidth = (width - 32 - 16) / 2; // Subtracting padding and margin
 
 const Products = () => {
   const navigation = useNavigation();
+  const foodData = [
+    {
+      id: '1',
+      name: 'Burger',
+      imageUrl: 'https://kfc.ee/wp-content/uploads/2024/01/Cheddar-Burger.png', 
+    },
+    {
+      id: '2',
+      name: 'Pizza',
+      imageUrl: 'https://static.vecteezy.com/system/resources/previews/022/149/342/non_2x/hot-italian-pizza-cutout-png.png', 
+    },
+    {
+      id: '3',
+      name: 'Nuggets',
+      imageUrl: 'https://static.vecteezy.com/system/resources/previews/025/222/173/original/chicken-nuggets-isolated-on-transparent-background-png.png', 
+    },
+    {
+      id: '4',
+      name: 'Pasta',
+      imageUrl: 'https://assets-global.website-files.com/6305f7d600c9842969920a58/64be4dce089aca2670712bff_pasta.png', 
+    },
+    {
+      id: '5',
+      name: 'Shawarma',
+      imageUrl: 'https://png.pngtree.com/png-vector/20240130/ourmid/pngtree-shawarma-sandwich-isolated-png-png-image_11573054.png', 
+    },
+  ];
   const data = [
     {
       id: 0,
-      name: "t-shirt 1",
-      price: 300,
+      name: "Zinger Burger Deal",
+      price: 400,
       image:
-        "https://img.freepik.com/free-psd/isolated-white-t-shirt-front-view_125540-1194.jpg",
+        "https://sendgiftpakistan.com/blog/wp-content/uploads/2015/06/KFC-Krunch-Burger-With-Fries-N-Drink.png",
       qty: 0,
     },
     {
       id: 1,
-      name: "t-shirt 2",
-      price: 349,
+      name: "Zinger Burger",
+      price: 290,
       qty: 0,
       image:
-        "https://png.pngtree.com/png-clipart/20190515/original/pngtree-white-t-shirt-mockup-png-image_3610313.jpg",
+        "https://kfcromania.vtexassets.com/arquivos/ids/155779/WEB-Zinger_Burger-1200x1200px.png?v=638376324281070000",
     },
     {
       id: 2,
-      name: "t-shirt 3",
-      price: 200,
+      name: "Zinger Patty Burger",
+      price: 380,
       qty: 0,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbGRe7Gwzr_YOtd_nFxSGfzM9H17HZo6RPrATeLBGIWdXWzvXPFNLy0c43QVsOH480jtc&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuLNAbbFOn_8yJYGnMvzzcoOdsNuk66uCIMw&usqp=CAU",
     },
     {
       id: 3,
-      name: "t-shirt 4",
-      price: 299,
+      name: "Special Deal",
+      price: 600,
       qty: 0,
       image:
-        "https://png.pngtree.com/png-vector/20201128/ourmid/pngtree-cotton-t-shirt-png-image_2401873.jpg",
+        "https://kfc.lt/wp-content/uploads/2024/02/Cheddar-meal-L.png",
     },
     {
       id: 4,
-      name: "t-shirt 5",
+      name: "Mighty Burger",
+      price: 320,
+      qty: 0,
+      image:
+        "https://kfc.ee/wp-content/uploads/2024/01/Cheddar-Burger.png",
+    },
+    {
+      id: 5,
+      name: "Tower Burger Deal",
       price: 399,
       qty: 0,
       image:
-        "https://png.pngtree.com/element_our/png/20180828/dark-blue-t-shirt-mockup-png_72947.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEuRhzfz7pmsox0mXKOZaO09k5IeydVEjG25pw6qnrf57kRotRlcOd9Iv1v0sTjQkuCo0&usqp=CAU",
+    },
+    {
+      id: 6,
+      name: "Chicken Patty Burger",
+      price: 280,
+      qty: 0,
+      image:
+        "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/12/30/13/kfc-vegan-burger.png?width=1200&height=1200&fit=crop",
+    },
+    {
+      id: 7,
+      name: "Patty Burger",
+      price: 220,
+      qty: 0,
+      image:
+        "https://www.onegreenplanet.org/wp-content/uploads/2022/01/veganburger_alc.jpeg",
     },
   ];
 
@@ -95,12 +146,13 @@ const Products = () => {
   return (
     <View style={styles.containerr}>
       <View style={styles.header}>
-        <Text style={styles.reduxText}>Redux ToolKit</Text>
+        <Text style={styles.reduxText}>Categores</Text>
         <TouchableOpacity
           style={styles.cartIcon}
           onPress={() => navigation.navigate("cart")}
         >
           <FontAwesome name="shopping-cart" size={24} color="black" />
+          {/* <Image style={{height:24,width:24}} source={{uri:'https://media.istockphoto.com/id/467367107/tr/foto%C4%9Fraf/empty-kfc-bucket.jpg?s=612x612&w=0&k=20&c=mKMqA8XC2Zxj4sGQzDDLbxfzlqK2KAduPK288pkj2pA='}}/> */}
           {myCartItem.length !== 0 ? (
             <View style={styles.cartBadge}>
               <Text style={styles.cartBadgeText}>{myCartItem.length}</Text>
@@ -109,12 +161,37 @@ const Products = () => {
         </TouchableOpacity>
       </View>
       <FlatList
+        horizontal // Makes the list horizontal
+        data={foodData} // The data source
+        keyExtractor={(item) => item.id} // Key extractor
+        renderItem={({ item }) => ( // Render each item
+          <View style={styles.item1}>
+            <Image source={{ uri: item.imageUrl }} style={styles.image1} /> 
+            <Text style={styles.name1}>{item.name}</Text> 
+          </View>
+        )}
+        showsHorizontalScrollIndicator={false} // Hide the horizontal scroll bar
+      />
+      <View style={{margin:5}}>
+      <Text style={styles.reduxText}>Fast Food</Text>
+
+      </View>
+      <FlatList
         data={myProducts}
         renderItem={({ item, index }) => (
           <View style={styles.itemContainer}>
+            <View style={styles.imageContainer}>
             <Image style={styles.image} source={{ uri: item.image }} />
+            {/* Absolute position for the detail icon */}
+            <TouchableOpacity
+              style={styles.infoIcon}
+              onPress={() => console.log('Info Icon Pressed')} // Action when icon is clicked
+            >
+              <FontAwesome name="info" size={11} color="gray" />
+            </TouchableOpacity>
+          </View>
             <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.price}>${item.price}</Text>
+            {/* <Text style={styles.price}>${item.price}</Text> */}
             <View>
               {item.qty == 0 ? (
                 <TouchableOpacity
@@ -138,7 +215,7 @@ const Products = () => {
                     style={styles.itembutton}
                     onPress={() => {
                       if (item.qty > 1) {
-                        dispatch(removeMyCartItem(item));
+                        dispatch(removeMyCartItem(item.id));
                         dispatch(decreaseQty(item.id));
                       } else {
                         dispatch(deleteMyCartItem(item.id));
@@ -196,31 +273,61 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   reduxText: {
-    fontSize: 16,
+    fontSize: 25,
     fontWeight: "bold",
   },
+
+   item1: {
+    marginRight: 16, // Spacing between items
+    alignItems: 'center', // Center items horizontally
+    height:120,
+
+  },
+  image1: {
+    width: 70,
+    height: 70,
+    borderRadius: 10,
+  },
+  name1: {
+    // marginTop: 8,
+    fontSize: 15,
+  },
   container: {
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
+    alignItems:'center',
     paddingTop: 20,
   },
   itemContainer: {
     width: itemWidth,
-    margin: 8,
+    // margin: 8,
     backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 16,
+    // borderRadius: 8,
+    // padding: 16,
     elevation: 3,
+    marginBottom: 8,
+    marginHorizontal: 8,
+    padding:5,
+  elevation:10
+  },
+  imageContainer: {
+    position: 'relative', // Important for absolute positioning inside it
+  },
+  infoIcon: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
   },
   image: {
     width: "100%",
     height: 150,
     borderRadius: 8,
     marginBottom: 10,
+    resizeMode:"stretch"
   },
   name: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 10,
   },
   price: {
     fontSize: 14,
@@ -228,9 +335,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "#E3242B",
     paddingVertical: 10,
-    borderRadius: 5,
+    // borderRadius: 5,
     alignItems: "center",
   },
   itembutton: {
@@ -277,14 +384,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     margin: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    elevation: 10,
   },
 
   checkoutButton: {

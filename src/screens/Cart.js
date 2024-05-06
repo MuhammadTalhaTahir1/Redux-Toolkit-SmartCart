@@ -49,7 +49,7 @@ const Cart = () => {
               style={styles.buttonText}
               onPress={() => {
                 if (item.qty > 1) {
-                  dispatch(removeMyCartItem(item));
+                  dispatch(removeMyCartItem(item.id));
                   dispatch(decreaseQty(item.id));
                 } else {
                   dispatch(deleteMyCartItem(item.id));
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   itembutton: {
-    backgroundColor: "green",
+    backgroundColor: "#E3242B",
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,

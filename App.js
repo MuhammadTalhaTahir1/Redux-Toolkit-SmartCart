@@ -8,48 +8,40 @@ import { mystore } from "./src/ReduxToolkit/MyStore";
 import { useEffect } from "react";
 import { addMyProduct } from "./src/ReduxToolkit/MyProductSlice";
 import Cart from "./src/screens/Cart";
-const data = [
-  {
-    id: 0,
-    name: "t-shirt 1",
-    price: 300,
-    image:
-      "https://img.freepik.com/free-psd/isolated-white-t-shirt-front-view_125540-1194.jpg",
-    qty: 0,
-  },
-  {
-    id: 1,
-    name: "t-shirt 2",
-    price: 349,
-    qty: 0,
-    image:
-      "https://png.pngtree.com/png-clipart/20190515/original/pngtree-white-t-shirt-mockup-png-image_3610313.jpg",
-  },
-  {
-    id: 2,
-    name: "t-shirt 3",
-    price: 200,
-    qty: 4,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbGRe7Gwzr_YOtd_nFxSGfzM9H17HZo6RPrATeLBGIWdXWzvXPFNLy0c43QVsOH480jtc&usqp=CAU",
-  },
-  {
-    id: 3,
-    name: "t-shirt 4",
-    price: 299,
-    qty: 0,
-    image:
-      "https://png.pngtree.com/png-vector/20201128/ourmid/pngtree-cotton-t-shirt-png-image_2401873.jpg",
-  },
-  {
-    id: 4,
-    name: "t-shirt 5",
-    price: 399,
-    qty: 0,
-    image:
-      "https://png.pngtree.com/element_our/png/20180828/dark-blue-t-shirt-mockup-png_72947.jpg",
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     name: "t-shirt 2",
+//     price: 349,
+//     qty: 0,
+//     image:
+//       "https://png.pngtree.com/png-clipart/20190515/original/pngtree-white-t-shirt-mockup-png-image_3610313.jpg",
+//   },
+//   {
+//     id: 2,
+//     name: "t-shirt 3",
+//     price: 200,
+//     qty: 4,
+//     image:
+//       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbGRe7Gwzr_YOtd_nFxSGfzM9H17HZo6RPrATeLBGIWdXWzvXPFNLy0c43QVsOH480jtc&usqp=CAU",
+//   },
+//   {
+//     id: 3,
+//     name: "t-shirt 4",
+//     price: 299,
+//     qty: 0,
+//     image:
+//       "https://png.pngtree.com/png-vector/20201128/ourmid/pngtree-cotton-t-shirt-png-image_2401873.jpg",
+//   },
+//   {
+//     id: 4,
+//     name: "t-shirt 5",
+//     price: 399,
+//     qty: 0,
+//     image:
+//       "https://png.pngtree.com/element_our/png/20180828/dark-blue-t-shirt-mockup-png_72947.jpg",
+//   },
+// ];
 export default function App() {
 
   const Stack = createStackNavigator();
